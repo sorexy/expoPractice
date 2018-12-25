@@ -20,12 +20,19 @@ export default class HomeScreen extends React.Component {
   };
 
   render() {
-    return (
-        <View>
-            <Greeting name="Richard"/>
-            <Counter/>
-        </View>
+    var initVal = 10
 
+    return (
+         // Outermost View encapsulates entire screen [highest level return]
+        <View style={{flex: 1, backgroundColor: "powderblue"}}>
+            <View style={{flex: 0.5, backgroundColor:"red"}}>
+                <Greeting/>
+            </View>
+            {/* This view takes 1.5x less scren than the top view */}
+            <View style={{flex: 0.5, backgroundColor: "green"}}>
+                <Counter initialValue={initVal}/>
+            </View>
+        </View>
     );
   }
 
