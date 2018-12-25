@@ -24,12 +24,12 @@ export default class HomeScreen extends React.Component {
 
     return (
          // Outermost View encapsulates entire screen [highest level return]
-        <View style={{flex: 1, backgroundColor: "powderblue"}}>
-            <View style={{flex: 0.5, backgroundColor:"red"}}>
+        <View style={{flex: 1, backgroundColor: "white"}}>
+            <View style={{flex: 0.4, justifyContent: "center"}}>
                 <Greeting/>
             </View>
             {/* This view takes 1.5x less scren than the top view */}
-            <View style={{flex: 0.5, backgroundColor: "green"}}>
+            <View style={{flex: 0.6}}>
                 <Counter initialValue={initVal}/>
             </View>
         </View>

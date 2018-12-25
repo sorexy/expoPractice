@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
+import { TouchableOpacity, Alert, View, Text, Button } from 'react-native';
 
 export default class Counter extends React.Component {
     constructor(props) {
@@ -10,9 +10,8 @@ export default class Counter extends React.Component {
     // Method declarations
     handleClick = () => {
         if (this.state.counterValue <= 0) {
-            this.setState(previousState => (
-                { counterValue: this.state.counterValue = 0 }
-            ))
+            Alert.alert("You're out of coupons buddy boy");
+
         } else {
             this.setState(previousState => (
                 { counterValue: this.state.counterValue-=1 }
@@ -41,17 +40,20 @@ export default class Counter extends React.Component {
                         hugs left!
                     </Text>
                 </View>
-                <View>
-                <Button
-                    onPress={this.handleClick}
-                    title="Use Coupon"
-                    color="blue"/>
+                <View style={{marginBottom: 30, width: 260, height: 50, justifyContent: "center", alignItems: "center", backgroundColor: "#2196F3"}}>
+                    <TouchableOpacity onPress={this.handleClick}>
+                        <View style={{width:260, height:50, alignItems: "center", justifyContent: "center"}}>
+                            <Text style={{fontSize: 16, color:"white"}}>
+                                Use Coupon
+                            </Text>
+                        </View>
+                    </TouchableOpacity>
                 </View>
                 <View>
-                <Button
-                    onPress={this.handleReset}
-                    title="Reset Counter"
-                    color="red"/>
+                    <Button
+                        onPress={this.handleReset}
+                        title="Reset Counter"
+                        color="red"/>
                 </View>
             </View>
         );

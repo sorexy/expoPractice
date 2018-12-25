@@ -4,7 +4,7 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import AddHugScreen from '../screens/AddHugScreen';
+import LinksScreen from '../screens/LinksScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -17,28 +17,28 @@ HomeStack.navigationOptions = {
       focused={focused}
       name={
         Platform.OS === 'ios'
-          ? `ios-flame`
-          : 'md-flame'
+          ? `ios-information-circle${focused ? '' : '-outline'}`
+          : 'md-information-circle'
       }
     />
   ),
 };
 
-const AddHugStack = createStackNavigator({
-  AddHug: AddHugScreen,
+const LinksStack = createStackNavigator({
+  Links: LinksScreen,
 });
 
-AddHugStack.navigationOptions = {
-  tabBarLabel: 'Add Coupons',
+LinksStack.navigationOptions = {
+  tabBarLabel: 'Links',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-key' : 'md-key'}
+      name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
     />
   ),
 };
 
 export default createBottomTabNavigator({
   HomeStack,
-  AddHugStack
+  LinksStack
 });
