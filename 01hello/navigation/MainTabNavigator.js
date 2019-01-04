@@ -5,6 +5,7 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import AddHugScreen from '../screens/AddHugScreen';
+import AuthenticationScreen from '../screens/AuthenticationScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -38,7 +39,22 @@ AddHugStack.navigationOptions = {
   ),
 };
 
+const AuthenticationStack = createStackNavigator({
+  Authenticate: AuthenticationScreen,
+});
+
+AuthenticationStack.navigationOptions = {
+  tabBarLabel: 'Authenticate',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? 'ios-key' : 'md-key'}
+    />
+  ),
+};
+
 export default createBottomTabNavigator({
   HomeStack,
-  AddHugStack
+  AddHugStack,
+  AuthenticationStack
 });
