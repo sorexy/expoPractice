@@ -4,8 +4,8 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import AddHugScreen from '../screens/AddHugScreen';
+import AuthenticationScreen from '../screens/AuthenticationScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -18,43 +18,43 @@ HomeStack.navigationOptions = {
       focused={focused}
       name={
         Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
+          ? `ios-flame`
+          : 'md-flame'
       }
     />
   ),
 };
 
-const LinksStack = createStackNavigator({
-  Links: LinksScreen,
+const AddHugStack = createStackNavigator({
+  AddHug: AddHugScreen,
 });
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+AddHugStack.navigationOptions = {
+  tabBarLabel: 'Add Coupons',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
+      name={Platform.OS === 'ios' ? 'ios-key' : 'md-key'}
     />
   ),
 };
 
-const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen,
+const AuthenticationStack = createStackNavigator({
+  Authenticate: AuthenticationScreen,
 });
 
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+AuthenticationStack.navigationOptions = {
+  tabBarLabel: 'Authenticate',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
+      name={Platform.OS === 'ios' ? 'ios-key' : 'md-key'}
     />
   ),
 };
 
 export default createBottomTabNavigator({
   HomeStack,
-  LinksStack,
-  SettingsStack,
+  AddHugStack,
+  AuthenticationStack
 });
