@@ -9,7 +9,7 @@ export default class AddToHugs extends React.Component {
     }
 
     handleSubmit = () => {
-        this.props.onAddHug(5);
+        this.props.onAddHug(1);
         this.numHugFieldInput.clear();
     }
 

@@ -19,10 +19,8 @@ export default class Counter extends React.Component {
         }
     }
 
-    handleReset = () => {
-        this.setState(previousState => (
-            { counterValue: this.props.initialValue }
-        ))
+    handleClaim = () => {
+        this.setState({counterValue: this.state.counterValue + this.props.numHugsToAdd});
     }
 
     render() {
@@ -51,9 +49,9 @@ export default class Counter extends React.Component {
                 </View>
                 <View>
                     <Button
-                        onPress={this.handleReset}
-                        title="Reset Counter"
-                        color="red"/>
+                        onPress={this.handleClaim}
+                        title="Claim Tokens!"
+                        color="green"/>
                 </View>
             </View>
         );

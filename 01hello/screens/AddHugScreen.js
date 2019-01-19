@@ -9,13 +9,13 @@ export default class AddHugScreen extends React.Component {
     }
 
     onAddHug = (numHugs) => {
-        // TODO: Remove this shit later
-        displayValue = this.state.numHugsToAdd + numHugs;
-        displayValue = displayValue.toString();
-        this.setState({numHugsToAdd: this.state.numHugsToAdd+=numHugs}, Alert.alert(displayValue));
-        this.props.navigation.navigate('Home');
-    }
+        this.setState(
+            {numHugsToAdd: this.state.numHugsToAdd+=numHugs},
+        );
 
+        // Send as JSON, the value numHugsInString, under the key "numHugsToAdd" to Home
+        this.props.navigation.navigate('Home', {numHugsToAdd: this.state.numHugsToAdd});
+}
     static navigationOptions = {
       header: null,
     };

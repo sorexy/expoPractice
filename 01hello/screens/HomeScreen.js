@@ -19,8 +19,16 @@ export default class HomeScreen extends React.Component {
     header: null,
   };
 
+  constructor(props) {
+      super(props);
+      this.state = {numHugsToAdd: "0"};
+  }
+
+
+
   render() {
-    var initVal = 10
+    var initVal = 10;
+    numHugsNumber = this.props.navigation.getParam('numHugsToAdd', 'Don\'t be greedy!').toString();
 
     return (
          // Outermost View encapsulates entire screen [highest level return]
@@ -30,7 +38,10 @@ export default class HomeScreen extends React.Component {
             </View>
             {/* This view takes 1.5x less scren than the top view */}
             <View style={{flex: 0.6}}>
-                <Counter initialValue={initVal}/>
+                <Counter
+                    initialValue={initVal}
+                    numHugsToAdd={numHugsNumber}
+                />
             </View>
         </View>
     );
