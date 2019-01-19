@@ -27,7 +27,8 @@ export default class AuthenticationScreen extends React.Component {
 
     onHandleAuth = () => {
         if (this.state.username == userToCompare && this.state.password == pwToCompare) {
-            Alert.alert("Logged in");
+            Alert.alert("Welcome to the Promise Land");
+            this.props.navigation.navigate('AddHug');
         } else {
             Alert.alert("Invalid Credentials");
         }
