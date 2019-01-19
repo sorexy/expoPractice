@@ -1,5 +1,5 @@
 import React from "react";
-import { Alert, View, Text, KeyboardAvoidingView } from "react-native";
+import { Alert, View, Text, KeyboardAvoidingView, StyleSheet } from "react-native";
 import LoginForm from "../components/LoginForm";
 
 // Username and passwords to log in
@@ -38,12 +38,12 @@ export default class AuthenticationScreen extends React.Component {
     };
     render() {
         return (
-            <KeyboardAvoidingView behavior="padding" style={{flex:1, backgroundColor: "yellow"}}>
-                <View style={{flex: 1, alignItems: "center", justifyContent: "center", backgroundColor: "blue"}}>
-                    <Text>Authenticate</Text>
+            <KeyboardAvoidingView behavior="padding" style={styles.keyboardAvoidingView}>
+                <View style={styles.authContainer}>
+                    <Text style={styles.text}>Authenticate</Text>
                 </View>
                 {/* WHY THIS CANNOT HAVE FLEX? IF HAS FLEX THEN KEYBOARDAVOIDINGVIEW DOESN'T WORK */}
-                <View style={{backgroundColor: "red"}}>
+                <View style={styles.loginFormView}>
                     <LoginForm
                         isLoggedIn={this.state.isLoggedIn}
                         username={this.state.username}
@@ -56,3 +56,22 @@ export default class AuthenticationScreen extends React.Component {
         );
     }
 }
+
+const styles = StyleSheet.create({
+    authContainer: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "teal"
+    },
+    keyboardAvoidingView: {
+        flex:1,
+        backgroundColor: "yellow"
+    },
+    loginFormView: {
+        backgroundColor: "red"
+    },
+    text: {
+        fontSize: 22
+    }
+})

@@ -37,6 +37,8 @@ export default class LoginForm extends React.Component {
                     />
                 <TouchableOpacity
                     style={styles.buttonContainer}
+                    // TODO: Update this.state.username and this.state.password to the text input values
+                    //       and pass these values in the function below
                     onPress={() => this.props.onHandleLoginAttempt("sorex", "1341")}
                     >
                     <Text style={styles.buttonText}>
