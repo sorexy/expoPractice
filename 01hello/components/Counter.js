@@ -1,10 +1,11 @@
 import React from "react";
-import { TouchableOpacity, Alert, View, Text, Button } from "react-native";
+import { TouchableOpacity, Alert, View, Text, Button, StyleSheet } from "react-native";
 
 export default class Counter extends React.Component {
     constructor(props) {
         super(props)
         this.state = { counterValue: this.props.initialValue }
+        this.claimed = false;
     }
 
     // Method declarations
@@ -20,12 +21,17 @@ export default class Counter extends React.Component {
     }
 
     handleClaim = () => {
-        this.setState({counterValue: this.state.counterValue + this.props.numHugsToAdd});
+        if (typeof(this.props.numHugsToAdd) == 'number' && this.claimed == false) {
+            this.setState({counterValue: this.state.counterValue + this.props.numHugsToAdd});
+            this.claimed = true;
+        } else {
+            Alert.alert("Don't be greedy!");
+        }
     }
 
     render() {
         return (
-            <View style={{ flex:1, justifyContent: "space-evenly", alignItems: "center"}}>
+            <View style={styles.outermostView}>
                 <View style={{ alignItems: "center"}}>
                     <Text style={{fontSize: 22, color:"black"}}>
                         You have
@@ -38,9 +44,9 @@ export default class Counter extends React.Component {
                         hugs left!
                     </Text>
                 </View>
-                <View style={{marginBottom: 30, width: 260, height: 50, justifyContent: "center", alignItems: "center", backgroundColor: "#2196F3"}}>
+                <View style={styles.touchableOpacityView}>
                     <TouchableOpacity onPress={this.handleClick}>
-                        <View style={{width:260, height:50, alignItems: "center", justifyContent: "center"}}>
+                        <View style={styles.touchableOpacityView2}>
                             <Text style={{fontSize: 16, color:"white"}}>
                                 Use Coupon
                             </Text>
@@ -57,3 +63,27 @@ export default class Counter extends React.Component {
         );
     }
 }
+
+const styles = StyleSheet.create(
+    {
+        outermostView: {
+            flex:1,
+            justifyContent: "space-evenly",
+            alignItems: "center"
+        },
+        touchableOpacityView: {
+            marginBottom: 30,
+            width: 260,
+            height: 50,
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "#2196F3"
+        },
+        touchableOpacityView2: {
+            width:260,
+            height:50,
+            alignItems: "center",
+            justifyContent: "center"
+        }
+    }
+)

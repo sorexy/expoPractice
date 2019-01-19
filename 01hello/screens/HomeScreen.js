@@ -28,7 +28,6 @@ export default class HomeScreen extends React.Component {
 
   render() {
     var initVal = 10;
-    numHugsNumber = this.props.navigation.getParam('numHugsToAdd', 'Don\'t be greedy!').toString();
 
     return (
          // Outermost View encapsulates entire screen [highest level return]
@@ -40,7 +39,7 @@ export default class HomeScreen extends React.Component {
             <View style={{flex: 0.6}}>
                 <Counter
                     initialValue={initVal}
-                    numHugsToAdd={numHugsNumber}
+                    numHugsToAdd={this.props.navigation.getParam('numHugsToAdd', 'Hugs not added!')}
                 />
             </View>
         </View>
