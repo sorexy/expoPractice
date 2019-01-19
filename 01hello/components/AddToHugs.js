@@ -9,15 +9,8 @@ export default class AddToHugs extends React.Component {
     }
 
     handleSubmit = () => {
-        this.handleAddHug();
+        this.props.onAddHug(5);
         this.numHugFieldInput.clear();
-    }
-
-    handleAddHug = () => {
-        // TODO
-        // Implement adding to HomeScreen.js
-        // Implement navigating back to HomeScreen
-        Alert.alert("Done");
     }
 
     render() {
