@@ -4,6 +4,7 @@ import { TouchableOpacity, Alert, View, Text, Button, StyleSheet } from "react-n
 export default class Counter extends React.Component {
     constructor(props) {
         super(props)
+        // TODO:Use AsyncStorage to store initial value on local device, and keep state = this value
         this.state = { counterValue: this.props.initialValue }
         this.claimed = false;
     }
