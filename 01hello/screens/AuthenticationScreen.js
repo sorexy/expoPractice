@@ -3,7 +3,7 @@ import { Alert, View, Text, KeyboardAvoidingView, StyleSheet } from "react-nativ
 import LoginForm from "../components/LoginForm";
 
 // Username and passwords to log in
-const userToCompare = "sorex";
+const userToCompare = "Sorex";
 const pwToCompare = "1341";
 
 
@@ -63,16 +63,17 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "teal"
+        backgroundColor: "black"
     },
     keyboardAvoidingView: {
         flex:1,
-        backgroundColor: "yellow"
+        backgroundColor: "black"
     },
     loginFormView: {
-        backgroundColor: "red"
+        backgroundColor: "black"
     },
     text: {
-        fontSize: 22
+        fontSize: 25,
+        color: "white"
     }
 })

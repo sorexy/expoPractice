@@ -27,7 +27,6 @@ export default class HomeScreen extends React.Component {
 
 
   render() {
-
     // TODO:Use AsyncStorage to store initial value on local device, and keep state = this value
     var initVal = 10;
 

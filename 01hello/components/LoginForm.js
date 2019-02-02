@@ -10,14 +10,6 @@ export default class LoginForm extends React.Component {
         }
     }
 
-    onReceiveusername = (user) => {
-        this.setState({username: user});
-    }
-
-    onReceivePassword = (pass) => {
-        this.setState({})
-    }
-
     render() {
         return(
             <View style={styles.container}>
@@ -25,7 +17,8 @@ export default class LoginForm extends React.Component {
                     placeholder="username"
                     placeholderTextColor="grey"
                     returnKeyType="next"
-
+                    onChangeText={(user) => this.setState({username: user})}
+                    onSubmitEditing={() => { this.passwordRef.focus(); }}
                     style={styles.input}
                     />
                 <TextInput
@@ -33,13 +26,12 @@ export default class LoginForm extends React.Component {
                     returnKeyType="go"
                     style={styles.input}
                     secureTextEntry
-                    ref={(input) => this.password = input}
+                    onChangeText={(pass) => this.setState({password: pass})}
+                    ref={(input) => { this.passwordRef = input; }}
                     />
                 <TouchableOpacity
                     style={styles.buttonContainer}
-                    // TODO: Update this.state.username and this.state.password to the text input values
-                    //       and pass these values in the function below
-                    onPress={() => this.props.onHandleLoginAttempt("sorex", "1341")}
+                    onPress={() => this.props.onHandleLoginAttempt(this.state.username, this.state.password)}
                     >
                     <Text style={styles.buttonText}>
                         Login
