@@ -9,8 +9,8 @@ export default class AddHugScreen extends React.Component {
     }
 
     onAddHug = (numHugs) => {
-        this.setState(
-            {numHugsToAdd: this.state.numHugsToAdd+=numHugs},
+        this.setState({
+            numHugsToAdd: this.state.numHugsToAdd += numHugs}
         );
 
         // Send as JSON, the value numHugsInString, under the key "numHugsToAdd" to Home

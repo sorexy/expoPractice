@@ -21,10 +21,12 @@ export default class HomeScreen extends React.Component {
 
   constructor(props) {
       super(props);
-      this.state = {numHugsToAdd: "0"};
+      // this.state = {numHugsToAdd: 0};
   }
 
-
+  // Because HTML passes elements with quotes in them (which resolves to string),
+  // need JS to change it to int before addition
+  numHugsInNum = parseInt(this.props.navigation.getParam('numHugsToAdd', 'd'));
 
   render() {
     // TODO:Use AsyncStorage to store initial value on local device, and keep state = this value
@@ -40,7 +42,7 @@ export default class HomeScreen extends React.Component {
             <View style={{flex: 0.6}}>
                 <Counter
                     initialValue={initVal}
-                    numHugsToAdd={this.props.navigation.getParam('numHugsToAdd', 'Hugs not added!')}
+                    numHugsToAdd={this.numHugsInNum}
                 />
             </View>
         </View>
