@@ -14,7 +14,10 @@ export default class Counter extends React.Component {
 
     handleLoadData = async () => {
         let numHugs = await AsyncStorage.getItem('numHugs');
-        this.setState({counterValue: numHugs});
+
+        if (parseInt(numHugs, 10) >= 0) {
+          this.setState({counterValue: numHugs});
+        }
     }
 
     handleSaveData = async () => {
