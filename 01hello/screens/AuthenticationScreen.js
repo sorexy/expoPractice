@@ -3,8 +3,8 @@ import { Alert, View, Text, KeyboardAvoidingView, StyleSheet } from "react-nativ
 import LoginForm from "../components/LoginForm";
 
 // Username and passwords to log in
-const userToCompare = "";
-const pwToCompare = "";
+const userToCompare = "Sorex";
+const pwToCompare = "1341";
 
 
 export default class AuthenticationScreen extends React.Component {

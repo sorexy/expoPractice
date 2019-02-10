@@ -1,30 +1,42 @@
 import React from "react";
-import { TouchableOpacity, Alert, View, Text, Button, StyleSheet } from "react-native";
+import { AsyncStorage, TouchableOpacity, Alert, View, Text, Button, StyleSheet } from "react-native";
 
 export default class Counter extends React.Component {
     constructor(props) {
         super(props)
-        // TODO:Use AsyncStorage to store initial value on local device, and keep state = this value
         this.state = { counterValue: this.props.initialValue }
         this.claimed = false;
+    }
+
+    componentDidMount() {
+        this.handleLoadData();
+    }
+
+    handleLoadData = async () => {
+        let numHugs = await AsyncStorage.getItem('numHugs');
+        this.setState({counterValue: numHugs});
+    }
+
+    handleSaveData = async () => {
+        AsyncStorage.setItem('numHugs', this.state.counterValue.toString());
     }
 
     // Method declarations
     handleClick = () => {
         if (this.state.counterValue <= 0) {
             Alert.alert("You're out of coupons buddy boy");
-
         } else {
-            this.setState(previousState => (
-                { counterValue: this.state.counterValue-=1 }
-            ))
+            this.setState({counterValue: this.state.counterValue -= 1},
+            this.handleSaveData)
         }
     }
 
     handleClaim = () => {
-        if (typeof(this.props.numHugsToAdd) == 'number' && this.claimed == false) {
-            this.setState({counterValue: this.state.counterValue + this.props.numHugsToAdd});
+        if (this.props.numHugsToAdd > 0 && this.claimed == false) {
+            this.setState({counterValue: parseInt(this.state.counterValue, 10) +
+                parseInt(this.props.numHugsToAdd, 10)});
             this.claimed = true;
+            this.handleSaveData();
         } else {
             Alert.alert("Don't be greedy!");
         }
