@@ -1,11 +1,13 @@
 import React from 'react';
-import { Text, StyleSheet, View, TextInput, TouchableOpacity } from 'react-native';
+import { Alert, Text, StyleSheet, View, TextInput, TouchableOpacity } from 'react-native';
 
 export default class LoginForm extends React.Component {
     constructor(props) {
         super(props);
-        this.username="";
-        this.password="";
+        this.state = {
+            username: "",
+            password: ""
+        }
     }
 
     render() {
@@ -15,9 +17,8 @@ export default class LoginForm extends React.Component {
                     placeholder="username"
                     placeholderTextColor="grey"
                     returnKeyType="next"
-                    // After submit, will focus on this.password (which is input of password)
-                    ref={(input) => this.username = input}
-                    onSubmitEditing={() => this.password.focus()}
+                    onChangeText={(user) => this.setState({username: user})}
+                    onSubmitEditing={() => { this.passwordRef.focus(); }}
                     style={styles.input}
                     />
                 <TextInput
@@ -25,9 +26,13 @@ export default class LoginForm extends React.Component {
                     returnKeyType="go"
                     style={styles.input}
                     secureTextEntry
-                    ref={(input) => this.password = input}
+                    onChangeText={(pass) => this.setState({password: pass})}
+                    ref={(input) => { this.passwordRef = input; }}
                     />
-                <TouchableOpacity style={styles.buttonContainer}>
+                <TouchableOpacity
+                    style={styles.buttonContainer}
+                    onPress={() => this.props.onHandleLoginAttempt(this.state.username, this.state.password)}
+                    >
                     <Text style={styles.buttonText}>
                         Login
                     </Text>

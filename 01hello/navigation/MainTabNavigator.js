@@ -8,6 +8,8 @@ import AddHugScreen from '../screens/AddHugScreen';
 import AuthenticationScreen from '../screens/AuthenticationScreen';
 
 const HomeStack = createStackNavigator({
+  // 'Home' is a reference to the screen
+  // HomeScreen is the imported screen
   Home: HomeScreen,
 });
 
@@ -25,7 +27,7 @@ HomeStack.navigationOptions = {
   ),
 };
 
-const AddHugStack = createStackNavigator({
+export const AddHugStack = createStackNavigator({
   AddHug: AddHugScreen,
 });
 
@@ -55,6 +57,5 @@ AuthenticationStack.navigationOptions = {
 
 export default createBottomTabNavigator({
   HomeStack,
-  AddHugStack,
   AuthenticationStack
 });

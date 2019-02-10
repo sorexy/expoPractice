@@ -5,19 +5,12 @@ export default class AddToHugs extends React.Component {
     constructor(props) {
         super(props);
         this.state = {numHugsToAdd: 0};
-        this.numHugFieldInput = '';
     }
 
     handleSubmit = () => {
-        this.handleAddHug();
+        this.setState({numHugsToAdd: Number(this.state.numHugsToAdd)})
+        this.props.onAddHug(this.state.numHugsToAdd);
         this.numHugFieldInput.clear();
-    }
-
-    handleAddHug = () => {
-        // TODO
-        // Implement adding to HomeScreen.js
-        // Implement navigating back to HomeScreen
-        Alert.alert("Done");
     }
 
     render() {
@@ -47,6 +40,7 @@ export default class AddToHugs extends React.Component {
                         textAlign={'center'}
                         placeholder="Number of coupons"
                         onSubmitEditing={this.handleSubmit}
+                        onChangeText={(input) => this.setState({numHugsToAdd: input})}
                     />
                 </View>
             </View>
